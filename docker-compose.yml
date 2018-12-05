@@ -1,0 +1,22 @@
+
+version: '3.2'
+
+services:
+  gitlab-runner1:
+    image: gitlab/gitlab-runner:alpine
+    volumes: ["./gitlab-runner1-config:/etc/gitlab-runner", "/var/run/docker.sock:/var/run/docker.sock"]
+  gitlab-runner2:
+    image: gitlab/gitlab-runner:alpine
+    volumes: ["./gitlab-runner2-config:/etc/gitlab-runner", "/var/run/docker.sock:/var/run/docker.sock"]
+  gitlab-jnpr-automate:
+    image: gitlab/gitlab-runner:alpine
+    volumes: ["./gitlab-jnpr-automate-config:/etc/gitlab-runner", "/var/run/docker.sock:/var/run/docker.sock"]
+  git-inetsix:
+    image: gitlab/gitlab-runner:alpine
+    volumes: ["./git-inetsix-config:/etc/gitlab-runner", "/var/run/docker.sock:/var/run/docker.sock"]
+
+volumes:
+  git-inetsix-config:
+  gitlab-runner1-config:
+  gitlab-runner2-config:
+  gitlab-jnpr-automate-config:
