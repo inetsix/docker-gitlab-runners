@@ -1,15 +1,80 @@
-# Docker Compose VPS
+# Docker Compose for gitlab-ci runners
 
-Repository to centralize docker definition to run CI Runners for GITLAB servers:
+Repository to deploy a stack of 4 gitlab runners. Runners are configured to run any docker containers as CI environment (docker-executor) and `docker in docker` (dind) as well to build docker image
 
-- `gitlab-runner1`: Unregistered runner
-- `gitlab-runner2`: Registered to [gitlab.com / inetsix](https://gitlab.com/inetsix/)
-- `gitlab-jnpr-automate`: Registered to [gitlab.com / jnprautomate](https://gitlab.com/jnprautomate)
-- `git-inetsix`: Registered to [git.inetsix.net](https://git.inetsix.net)
+## Usage
 
-Runners are configured to run any docker containers as CI environment (docker-executor) and `docker in docker` (dind) as well to build docker image
+Update file [`env.runners`](env.runners) to add your token:
 
-## Install docker compose:
+```shell
+$ cat env.runners
+GIT_SERVER="https://www.gitlab.com"
+TOKEN_REGISTRATION="PUT YOUR GITLAB TOKEN HERE"
+TAGS="docker,ansible"
+```
+
+You can also change `tags` and gitlab server accordingly
+
+### Short path to runners UP
+
+```shell
+# Build topology, start and register
+$ make build
+
+# Get docker status
+$ make ps
+
+# Delete topology
+$make down
+```
+
+### Available commands
+
+- __Build and register runners__
+
+```shell
+$ make build
+```
+
+- __List runners status__
+
+```shell
+$ make unregister
+```
+
+- __Stop runners__
+
+```shell
+$ make stop
+```
+
+- __Start runners__
+
+```shell
+$ make start
+```
+
+- __Delete runners__
+
+```shell
+$ make down
+```
+
+- __Register runners__
+
+```shell
+$ make register
+```
+
+- __Unregister runners__
+
+```shell
+$ make unregister
+```
+
+## Misc
+
+### Install docker compose:
 
 * Run this command to download the latest version of Docker Compose:
 
@@ -31,7 +96,7 @@ $ docker-compose --version
 docker-compose version 1.21.2, build 1719ceb
 ```
 
-## Start topology
+### Start topology
 
 In the repository:
 
@@ -39,7 +104,7 @@ In the repository:
 docker-compose up -d --build
 ```
 
-## Upgrade images:
+### Upgrade images:
 
 ```shell
 docker-compose stop
@@ -49,7 +114,7 @@ done
 docker-compose up -d --build
 ```
 
-## Debug
+### Debug
 
 - Add DOCKER-ISOLATION in iptables:
 
