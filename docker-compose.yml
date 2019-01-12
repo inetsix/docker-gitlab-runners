@@ -1,21 +1,21 @@
-
+---
 version: '3.2'
 
 services:
   runner1:
-    container_name: runner1
+    container_name: ci-runner1
     image: gitlab/gitlab-runner:alpine
-    volumes: ["./runner1:/etc/gitlab-runner", "/var/run/docker.sock:/var/run/docker.sock"]
-  runner2:
-    container_name: runner2
-    image: gitlab/gitlab-runner:alpine
-    volumes: ["./runner2:/etc/gitlab-runner", "/var/run/docker.sock:/var/run/docker.sock"]
-  runner3:
-    container_name: runner3
-    image: gitlab/gitlab-runner:alpine
-    volumes: ["./runner3:/etc/gitlab-runner", "/var/run/docker.sock:/var/run/docker.sock"]
-  runner4:
-    container_name: runner4
-    image: gitlab/gitlab-runner:alpine
-    volumes: ["./runner4:/etc/gitlab-runner", "/var/run/docker.sock:/var/run/docker.sock"]
+    volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
+  # runner2:
+  #   container_name: ci-runner2
+  #   image: gitlab/gitlab-runner:alpine
+  #   volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
+  # runner3:
+  #   container_name: ci-runner3
+  #   image: gitlab/gitlab-runner:alpine
+  #   volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
+  # runner4:
+  #   container_name: ci-runner4
+  #   image: gitlab/gitlab-runner:alpine
+  #   volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
 
