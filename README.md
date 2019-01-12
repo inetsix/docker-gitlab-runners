@@ -25,7 +25,7 @@ $ make build
 $ make ps
 
 # Delete topology
-$make down
+$ make down
 ```
 
 ### Available commands
