@@ -6,7 +6,6 @@ up:
 		@echo "Build image, load variables, register runners"
 		@echo "======================================================================"
 		docker-compose -f ./docker-compose.yml up -d
-		sh build.sh
 		sh runner-register.sh
 
 down:
@@ -33,7 +32,6 @@ register:
 		@echo "======================================================================"
 		@echo "Register runners"
 		@echo "======================================================================"
-		sh build.sh
 		sh runner-register.sh
 
 unregister:
