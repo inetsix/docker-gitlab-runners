@@ -19,7 +19,7 @@ You can also change `tags` and gitlab server accordingly
 
 ```shell
 # Build topology, start and register
-$ make build
+$ make up
 
 # Get docker status
 $ make ps
