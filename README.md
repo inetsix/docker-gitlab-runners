@@ -33,7 +33,7 @@ $ make down
 - __Build and register runners__
 
 ```shell
-$ make build
+$ make up
 ```
 
 - __List runners status__
