@@ -20,5 +20,6 @@ for RUNNER in `docker-compose ps | grep Up | awk '{print $1}'`; do
 	  --description "docker-runner" \
 	  --tag-list ${TAGS} \
 	  --run-untagged \
-	  --locked="false"
+	  --locked="false" \
+	  --docker-privileged
 done
